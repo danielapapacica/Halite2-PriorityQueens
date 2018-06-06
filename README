@@ -1,0 +1,68 @@
+/*Team PriorityQueens
+Badeanu Madalina
+Dinca Oana Maria
+Papacica Elena-Daniela*/
+
+			HALITE II
+		 	 Etapa 2
+
+
+    -> Instructiuni de complare:
+    	make
+    	python ./run.py  --cmd "java MyBot" --round 2
+
+
+    -> Structura proiectului:
+
+    	Aceeasi structura ca data trecuta si cateva metode modificate.
+    	
+
+	-> Detalii de implementare
+
+
+		Pentru cucerire:
+			Incercam sa populam o planeta la maximum pentru a-i mari productivitatea. De asemenea,
+		am observat ca este mai eficient daca directionam navele spre centrul hartii, cucerind apoi
+		cele mai apropiate nave, deoarece in aceasta zona se afla cele mai multe planete si astfel
+		cresc sansele de marire a productiei de noi nave.
+
+		Pentru aparare:
+			In MyBot.java: Verificam mai intai daca o docare poate fi realizata in conditii sigure.
+		Acest lucru presupune sa nu existe nave ale inamicului in apropierea navei personale.
+		In caz contrar, in loc sa docam, parcurgem lista entitatilor din apropiere si atacam
+		cea mai apropiata nava inamica.
+
+		O nava inamica este prea apropiata de nava noastra in conditiile in care ea se afla 
+		la o distanta mai mica de 35 de unitati de lungime (5 ture dureaza o docare, timp in
+		care nava inamica parcurge 7 unitati de lungime pe tura * 5 ture). 
+		Insa, avand in vedere prezenta mai multor nave aliate si a faptului ca nu orice nava
+		inamica din aceasta arie indrazneste sa ne atace, este mai profitabil sa incercam sa
+		docam. Din acest motiv am redus aria de precautie cu 10 unitati.
+
+		Cautarea navelor inamice in preajma atunci cand dorim sa docam are complexitate constanta
+		deorece renuntam la docare de la prima nava inamica gasita.
+
+
+		Pentru atac:
+			In MyBot.java: In caz ca gasim o planeta ocupata de inamic, interogam care sunt navele docate
+		si mergem la ele sa le atacam.
+
+		Alegerea navei pe care o atacam are complexitate constanta.
+
+
+		Reviuzirea coliziunilor:
+			Am simplificat functia folosita in prima etapa. Verificam distanta dintre 2 nave. Daca
+			acestea sunt prea apropiate deviem traietoria uneia cu 90 de grade. Iar apoi, inapoi in
+			MyBot.java verificam daca aceasta incercare de deviere nu va urma sa se colizeze cu alte
+			nave de-ale noastre. In cazul in care ar urma o alta coliziune, anulam miscarea.
+
+
+	-> Surse de inspiratie
+		Hint-urile de pe ocw.cs.pub.ro + sfaturi de pe site-ul oficial halite si de pe forumul lor
+
+	-> Responsabilitati membri echipa
+		
+		Am propus fiecare mai multe feluri de strategii si fiecare dintre noi s-a concentrat pe 
+		cate una.
+		Din pacate, mai multe nu au functionat, asa ca le vom imbunatati pentru etapa urmatoare.
+
